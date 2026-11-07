@@ -1,0 +1,16 @@
+{
+    "require": {
+        "php": "^8.3",
+        "zircote/swagger-php": "^4.10"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0",
+        "mockery/mockery": "^1.6",
+        "phpstan/phpstan": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Galamoon\\Notes\\": "lib/"
+        }
+    }
+}

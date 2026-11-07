@@ -1,0 +1,15 @@
+<?php
+
+$MESS['NOTES_COMPONENT_TITLE'] = 'Notes';
+$MESS['NOTES_ADD_NOTE'] = 'New note';
+$MESS['NOTES_EMPTY_TEXT'] = 'No notes yet';
+$MESS['NOTES_EDIT_LABEL'] = 'Edit';
+$MESS['NOTES_DELETE_LABEL'] = 'Delete';
+$MESS['NOTES_FORM_EDIT_TITLE'] = 'Edit note';
+$MESS['NOTES_FORM_CREATE_TITLE'] = 'New note';
+$MESS['NOTES_TITLE_LABEL'] = 'Title';
+$MESS['NOTES_TEXT_LABEL'] = 'Text';
+$MESS['NOTES_TITLE_PLACEHOLDER'] = 'Enter title';
+$MESS['NOTES_TEXT_PLACEHOLDER'] = 'Enter note text';
+$MESS['NOTES_CANCEL_LABEL'] = 'Cancel';
+$MESS['NOTES_SAVE_LABEL'] = 'Save';

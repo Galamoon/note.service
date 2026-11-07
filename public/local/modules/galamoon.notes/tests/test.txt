@@ -1,0 +1,1 @@
+'/var/www/html/bitrix/modules/main/include/prolog_before.php'
