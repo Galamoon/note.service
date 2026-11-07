@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: ${COMPOSE_PROJECT_NAME}_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - project:/var/www/html
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - php-fpm
+    networks:
+      - bitrix-network
+    restart: unless-stopped
+
+  php-fpm:
+    build:
+      context: ./php
+      dockerfile: Dockerfile.php
+    container_name: ${COMPOSE_PROJECT_NAME}_php-fpm
+    entrypoint: ["sh", "-c", "usermod -u ${HOST_UID} www-data 2>/dev/null || true && groupmod -g ${HOST_GID} www-data 2>/dev/null || true && exec docker-php-entrypoint php-fpm"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - project:/var/www/html
+    depends_on:
+      - mariadb
+    environment:
+      - PHP_IDE_CONFIG=serverName=localhost
+    networks:
+      - bitrix-network
+    restart: unless-stopped
+
+  mariadb:
+    image: mariadb:10.11
+    container_name: ${COMPOSE_PROJECT_NAME}_mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${DB_NAME:-bitrix}
+      MYSQL_USER: ${DB_USER:-bitrix}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-bitrix}
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
+      - ./mariadb/conf.d:/etc/mysql/conf.d:ro
+    networks:
+      - bitrix-network
+    restart: unless-stopped
+
+volumes:
+  project:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ${PROJECT_PATH}
+
+networks:
+  bitrix-network:
+    driver: bridge
