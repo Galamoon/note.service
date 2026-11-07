@@ -1,0 +1,22 @@
+<?php
+$MESS["TILE_UPLOADER_CANCEL_UPLOAD_LABEL"] = "Файлды жүктеуден бас тарту";
+$MESS["TILE_UPLOADER_DROP_FILES_HERE"] = "Файлды осы жерге көшіруіңізге болады";
+$MESS["TILE_UPLOADER_DROP_KEYBOARD_HINT"] = "Файлды таңдау терезесін ашу үшін Enter немесе бос орын пернесін басыңыз";
+$MESS["TILE_UPLOADER_ERROR_ANNOUNCE"] = "Файлдарды жүктеу мүмкін болмады";
+$MESS["TILE_UPLOADER_ERROR_STATUS"] = "Қате";
+$MESS["TILE_UPLOADER_FILE_ADDED_ANNOUNCE"] = "Файл қосылды: #FILENAME#";
+$MESS["TILE_UPLOADER_FILE_ERROR_ANNOUNCE"] = "#FILENAME# файлын жүктеу мүмкін болмады";
+$MESS["TILE_UPLOADER_FILE_INSERTED_STATUS"] = "Файл мәтінге кірістірілді";
+$MESS["TILE_UPLOADER_FILE_LIST_LABEL"] = "Тіркелген файлдар";
+$MESS["TILE_UPLOADER_FILE_REMOVED_ANNOUNCE"] = "Файл жойылды: #FILENAME#";
+$MESS["TILE_UPLOADER_FILE_SIZE"] = "Файл өлшемі: #filesize#";
+$MESS["TILE_UPLOADER_INSERT_INTO_THE_TEXT"] = "Мәтінге қою";
+$MESS["TILE_UPLOADER_ITEM_MENU_LABEL"] = "Файлмен әрекеттер";
+$MESS["TILE_UPLOADER_MENU_DOWNLOAD"] = "Жүктеу";
+$MESS["TILE_UPLOADER_MENU_REMOVE"] = "Жою";
+$MESS["TILE_UPLOADER_MORE_BUTTON_CAPTION"] = "Тағы да #COUNT#";
+$MESS["TILE_UPLOADER_OPEN_FILE_LABEL"] = "#FILENAME# файлын ашу";
+$MESS["TILE_UPLOADER_REMOVE_FILE_LABEL"] = "Файлды жою";
+$MESS["TILE_UPLOADER_SETTINGS_LABEL"] = "Файлдарды жүктеу баптаулары";
+$MESS["TILE_UPLOADER_UPLOAD_PROGRESS_LABEL"] = "Файлды жүктеу";
+$MESS["TILE_UPLOADER_WAITING_STATUS"] = "Күтудеміз";

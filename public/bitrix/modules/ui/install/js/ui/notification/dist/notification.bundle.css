@@ -1,0 +1,206 @@
+.ui-notification-balloon {
+	display: block;
+	position: fixed;
+	opacity: 0;
+	z-index: 3200;
+	transform: translateZ(0px);
+	transition: opacity .25s linear, left .5s ease, top .5s ease, right .5s ease, bottom .5s ease;
+}
+
+.ui-notification-balloon.--air {
+	box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.07);
+	font-weight: var(--ui-font-weight-normal);
+	font-size: var(--ui-font-size-xs);
+	line-height: var(--ui-font-line-height-2xs);
+	color: var(--ui-color-base-white-fixed);
+}
+
+.ui-notification-balloon-animate {
+	opacity: 0.8;
+}
+
+.ui-notification-balloon-animate.--air {
+	opacity: 1;
+}
+
+.ui-notification-balloon-content {
+	display: flex;
+	background: #000;
+	border-radius: 26px;
+	font: 13px var(--ui-font-family-primary, var(--ui-font-family-helvetica));
+}
+
+.ui-notification-balloon.--air .ui-notification-balloon-content {
+	background: var(--ui-color-bg-content-inapp);
+	border-radius: 18px;
+	font-size: var(--ui-font-size-xs);
+	font-family: var(--ui-font-family-primary, var(--ui-font-family-helvetica));
+}
+
+.ui-notification-balloon-message {
+	flex: 1;
+	color: #fff;
+	padding: 14px 16px 14px 25px;
+}
+
+.ui-notification-balloon.--air .ui-notification-balloon-message {
+	padding: 16px 18px 16px 18px;
+}
+
+.ui-notification-balloon-message:empty:before {
+	content: "\00a0";
+}
+
+.ui-notification-balloon-message a,
+.ui-notification-balloon-message a:hover {
+	color: #fff;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.ui-notification-balloon-message a:hover {
+	border-bottom-color: #fff;
+}
+
+.ui-notification-balloon-actions {
+	display: flex;
+	align-items: center;
+	margin-right: 38px;
+}
+
+.ui-notification-balloon-action {
+	color: #2fc6f6;
+	cursor: pointer;
+	overflow-wrap: anywhere;
+	text-decoration: none;
+	padding: 14px 9px;
+	position: relative;
+}
+
+/*
+ * The underline replaces the `:before` bar the action used to carry, and it is scoped to the
+ * markup the balloon renders itself — the content wrapper. A consumer that lays the balloon
+ * out on its own puts the actions elsewhere: intranet/push-invitations keeps its row outside
+ * the content wrapper and styles the actions as pills, which declare no `text-decoration` of
+ * their own and would inherit an underline nobody asked for. Everything a consumer does
+ * declare keeps winning: its rules carry at least this much weight and are loaded later.
+ */
+.ui-notification-balloon-content .ui-notification-balloon-action {
+	box-sizing: content-box;
+	text-decoration: underline;
+	text-decoration-color: rgba(47, 198, 246, 0.4);
+	text-underline-offset: 3px;
+}
+
+.ui-notification-balloon-content .ui-notification-balloon-action:hover {
+	text-decoration-color: #2fc6f6;
+}
+
+.ui-notification-balloon-close-btn {
+	position: absolute;
+	top: 0;
+	right: 2px;
+	display: inline-block;
+	width: 33px;
+	height: 43px;
+	opacity: .2;
+	cursor: pointer;
+	transition: 180ms opacity linear;
+}
+
+.ui-notification-balloon-close-btn:hover {
+	opacity: .7;
+}
+
+.ui-notification-balloon-close-btn:active {
+	opacity: 1;
+}
+
+.ui-notification-balloon-close-btn:after,
+.ui-notification-balloon-close-btn:before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: block;
+	background: #fff;
+	content: "";
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ui-notification-balloon-close-btn:after {
+	width: 2px;
+	height: 8px;
+}
+
+.ui-notification-balloon-close-btn:before {
+	width: 8px;
+	height: 2px;
+}
+
+/*
+ * The reset of the native button, kept to what a consumer cannot suffer from: everything
+ * here is either declared by the consumer itself — and its rules, loaded later and no
+ * weaker, win — or harmless where it is not. `box-sizing` is not: the pills of
+ * intranet/push-invitations are measured with `border-box` (84 x 27 with their own padding
+ * and border inside), so it belongs to our own layout and stays out of this reset.
+ */
+button.ui-notification-balloon-action {
+	appearance: none;
+	background: none;
+	border: none;
+	margin: 0;
+	font: inherit;
+	color: #2fc6f6;
+	cursor: pointer;
+	text-align: inherit;
+}
+
+button.ui-notification-balloon-close-btn {
+	appearance: none;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	color: inherit;
+	box-sizing: content-box;
+	cursor: pointer;
+}
+
+/*
+ * `[data-a11y-autofocus]` marks the control the balloon moved the focus to by itself.
+ * A browser keeps `:focus-visible` off after a pointer interaction, so without this the
+ * notification would take the focus silently and the first ring would only show up one
+ * control further, on the next Tab. Balloon sets the attribute and removes it as soon as
+ * the focus leaves that control.
+ */
+.ui-notification-balloon-action:focus-visible,
+.ui-notification-balloon-action[data-a11y-autofocus]:focus,
+.ui-notification-balloon-close-btn:focus-visible,
+.ui-notification-balloon-close-btn[data-a11y-autofocus]:focus {
+	outline: var(--ui-focus-outline-width) solid var(--ui-color-focus-outline);
+	outline-offset: var(--ui-focus-outline-offset-inset, -2px);
+}
+
+/*
+ * The close button is a 33x43 box pinned to the rounded top-right corner of the balloon
+ * (top: 0; right: 2px), so a ring flush with its own box would cross the corner arc. With
+ * the outline drawn outwards from the inset edge, the ring's outer rectangle sits at
+ * `offset - outline-width` from the button box, and its top-right point must stay inside
+ * the corner arc of radius R: (R - 2 - k)^2 + (R - k)^2 <= R^2, where k = |offset| - 2.
+ * Classic (R = 26) needs k >= 6.64, air (R = 18) only k >= 4.31, so -9px is the smallest
+ * inset that fits both — measured in the browser at 8.5px the corner still pokes out.
+ */
+.ui-notification-balloon-close-btn:focus-visible,
+.ui-notification-balloon-close-btn[data-a11y-autofocus]:focus {
+	outline-offset: -9px;
+	opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ui-notification-balloon,
+	.ui-notification-balloon-action,
+	.ui-notification-balloon-close-btn {
+		transition-duration: 1ms;
+	}
+}

@@ -1,0 +1,24 @@
+<?php
+$MESS["STACK_WIDGET_ABORT_UPLOAD"] = "Cancel upload";
+$MESS["STACK_WIDGET_DRAG_FILES_HINT"] = "Drop files here";
+$MESS["STACK_WIDGET_DRAG_FILE_HINT"] = "Drop file here";
+$MESS["STACK_WIDGET_FILES_UPLOADING"] = "Uploading files";
+$MESS["STACK_WIDGET_FILE_COUNT"] = "Files: #count#";
+$MESS["STACK_WIDGET_FILE_UPLOADING"] = "Uploading file";
+$MESS["STACK_WIDGET_FILE_UPLOAD_ERROR"] = "Upload error";
+$MESS["STACK_WIDGET_OPEN_FILE_GALLERY"] = "Open Gallery";
+$MESS["STACK_WIDGET_POPUP_TITLE"] = "Uploaded files";
+$MESS["STACK_WIDGET_UPLOAD_FILE"] = "Upload file";
+$MESS["STACK_WIDGET_UPLOAD_FILES"] = "Upload files";
+$MESS["STACK_WIDGET_UPLOAD_IMAGE"] = "Upload image";
+$MESS["STACK_WIDGET_UPLOAD_IMAGES"] = "Upload Image";
+$MESS["STACK_WIDGET_DROP_KEYBOARD_HINT"] = "Press Enter or Space to open the file selection dialog box";
+$MESS["STACK_WIDGET_ADD_FILE_LABEL"] = "Add file";
+$MESS["STACK_WIDGET_STACK_LABEL_ONE"] = "Uploaded files: #FILENAME#";
+$MESS["STACK_WIDGET_STACK_LABEL_MANY"] = "Uploaded files: #COUNT#";
+$MESS["STACK_WIDGET_STACK_LABEL_LOADING"] = "Preparing files";
+$MESS["STACK_WIDGET_UPLOAD_PROGRESS_LABEL"] = "Upload progress";
+$MESS["STACK_WIDGET_FILE_ADDED_ANNOUNCE"] = "File added: \"#FILENAME#\"";
+$MESS["STACK_WIDGET_FILE_REMOVED_ANNOUNCE"] = "File removed: \"#FILENAME#\"";
+$MESS["STACK_WIDGET_FILE_ERROR_ANNOUNCE"] = "Could not upload file \"#FILENAME#\"";
+$MESS["STACK_WIDGET_ERROR_ANNOUNCE"] = "Could not upload files";

@@ -1,0 +1,92 @@
+.ui-access-rights-v2-dv-popup--body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--ui-space-stack-xs2, 10px);
+	padding: 15px 16px 12px;
+	margin-bottom: 10px;
+	background-color: var(--ui-color-design-plain-na-focused-bg);
+	border-radius: 20px;
+}
+
+.ui-access-rights-v2-dv-popup--line-container {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	max-height: 400px;
+	overflow-y: auto;
+}
+
+.ui-access-rights-v2-dv-popup--line {
+	font-size: var(--ui-font-size-lg);
+	line-height: 20px;
+	letter-spacing: -0.05px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 42px;
+	min-height: 42px;
+	border-radius: var(--ui-border-radius-sm);
+	transition: background-color 180ms, color 180ms;
+}
+
+.ui-access-rights-v2-dv-popup--line.--checked {
+	background-color: var(--ui-color-design-tinted-bg, #e6f4ff);
+	color: var(--ui-color-accent-main-primary, #0075ff);
+}
+
+.ui-access-rights-v2-dv-popup--line.--clickable {
+	cursor: pointer;
+}
+
+.ui-access-rights-v2-dv-popup--line.--disabled {
+	cursor: default;
+	background-color: var(--ui-color-divider-less);
+}
+
+.ui-access-rights-v2-dv-popup--line.--secondary {
+	justify-content: flex-start;
+}
+
+.ui-access-rights-v2-dv-popup--line .ui-access-rights-v2-text-ellipsis {
+	max-width: 300px;
+}
+
+.ui-access-rights-v2-dv-popup--line.--secondary .ui-access-rights-v2-text-ellipsis {
+	max-width: 200px;
+}
+
+.ui-access-rights-v2-dv-popup--line-title {
+	display: flex;
+	align-items: center;
+	height: 20px; /* we need it for vertical alignment of text */
+	gap: 2px;
+}
+
+.ui-access-rights-v2-dv-popup--line-checkbox {
+	flex: none;
+}
+
+.ui-access-rights-v2-dv-popup--hint {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	color: var(--ui-color-palette-gray-50);
+}
+
+.ui-access-rights-v2-dv-fade-enter-active,
+.ui-access-rights-v2-dv-fade-leave-active {
+	transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.ui-access-rights-v2-dv-fade-enter-from,
+.ui-access-rights-v2-dv-fade-leave-to {
+	opacity: 0;
+	transform: translateY(-6px);
+}
+
+.ui-access-rights-v2-dv-fade-move {
+	transition: transform 150ms ease;
+}

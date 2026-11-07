@@ -1,0 +1,23 @@
+<?php
+$MESS["UI_SELECTOR_CREATE_ITEM_LABEL"] = "Құру:";
+$MESS["UI_SELECTOR_DIALOG_ARIA_LABEL_DEFAULT"] = "Элементтерді таңдау";
+$MESS["UI_SELECTOR_DIALOG_ARIA_LABEL_DEPARTMENT"] = "Бөлімді таңдау";
+$MESS["UI_SELECTOR_DIALOG_ARIA_LABEL_PROJECT"] = "Жобаны таңдау";
+$MESS["UI_SELECTOR_DIALOG_ARIA_LABEL_PROJECT_DEPARTMENT"] = "Жобаны немесе бөлімді таңдау";
+$MESS["UI_SELECTOR_DIALOG_ARIA_LABEL_USER"] = "Қызметкерді таңдау";
+$MESS["UI_SELECTOR_DIALOG_ARIA_LABEL_USER_DEPARTMENT"] = "Қызметкерді немесе бөлімді таңдау";
+$MESS["UI_SELECTOR_DIALOG_ARIA_LABEL_USER_PROJECT"] = "Қызметкерді немесе жобаны таңдау";
+$MESS["UI_SELECTOR_DIALOG_ARIA_LABEL_USER_PROJECT_DEPARTMENT"] = "Қызметкерді, жобаны немесе бөлімді таңдау";
+$MESS["UI_SELECTOR_ITEM_LINK_TITLE"] = "толығырақ";
+$MESS["UI_SELECTOR_RECENT_TAB_TITLE"] = "Соңғы";
+$MESS["UI_SELECTOR_SEARCH_LOADER_TEXT"] = "Қосымша нәтижелер ізделуде...";
+$MESS["UI_SELECTOR_SEARCH_RESULTS_COUNT"] = "Табылған элементтер: #COUNT#";
+$MESS["UI_SELECTOR_SEARCH_STUB_SUBTITLE_MSGVER_1"] = "Іздеу шарттарын өзгертіп көріңіз";
+$MESS["UI_SELECTOR_SEARCH_STUB_TITLE"] = "Сәйкестік жоқ";
+$MESS["UI_SELECTOR_SEARCH_TAB_TITLE"] = "Іздеу";
+$MESS["UI_SELECTOR_TAB_STUB_TITLE"] = "&laquo;#TAB_TITLE#&raquo; санатында ештеңе табылмады";
+$MESS["UI_TAG_SELECTOR_ADD_BUTTON_CAPTION"] = "Қосу";
+$MESS["UI_TAG_SELECTOR_ADD_BUTTON_CAPTION_MORE"] = "Тағы қосу";
+$MESS["UI_TAG_SELECTOR_ADD_BUTTON_CAPTION_SINGLE"] = "Өзгерту";
+$MESS["UI_TAG_SELECTOR_CREATE_BUTTON_CAPTION"] = "Жасау";
+$MESS["UI_TAG_SELECTOR_SEARCH_PLACEHOLDER"] = "іздеу";

@@ -1,0 +1,3 @@
+<?php
+$MESS['LNDBLCK_STOREMENUV3_2_PANEL_CLOSE_LABEL'] = 'Жабу';
+$MESS['LNDBLCK_STOREMENUV3_2_PANEL_LABEL'] = 'Дүкеннің ашылмалы мәзірі';

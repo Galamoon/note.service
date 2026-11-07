@@ -1,0 +1,1 @@
+{"version":3,"file":"script.map.js","names":["BX","ready","$","on","event","keyCode","target","dispatchEvent","Event","bubbles","preventDefault"],"sources":["script.js"],"mappings":"AAAAA,GAAGC,OAAM,WAERC,EAAE,sBAAsBC,GAAG,UAAW,sBAAsB,SAASC,GAEpE,GAAIA,EAAMC,UAAY,GACtB,CACCD,EAAME,OAAOC,cAAc,IAAIC,MAAM,SAAU,CAAEC,QAAS,QAC1DL,EAAMM,gBACP,CACD,GACD","ignoreList":[]}

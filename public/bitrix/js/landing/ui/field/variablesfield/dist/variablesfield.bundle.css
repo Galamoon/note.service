@@ -1,0 +1,23 @@
+.landing-ui-field-variables {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+}
+
+.landing-ui-field-variables-left {
+	flex-grow: 1;
+}
+
+.landing-ui-field-variables-button {
+	background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='4' viewBox='0 0 16 4'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath fill='%23fff' d='M-541-374H39v975h-580z'/%3E%3Cpath fill='%23525c69' d='M2 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4m6 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4m6 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4'/%3E%3C/g%3E%3C/svg%3E") center center no-repeat;
+	width: 36px;
+	height: 36px;
+	margin-right: -8px;
+	cursor: pointer;
+	opacity: .5;
+	transition: 200ms opacity ease;
+}
+
+.landing-ui-field-variables-button:hover {
+	opacity: 1;
+}

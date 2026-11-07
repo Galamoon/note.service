@@ -1,0 +1,22 @@
+.ui-access-rights-v2-cell-popup-header-master-switcher {
+	font-size: var(--ui-font-size-sm);
+	padding: 3px 0 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2px;
+	border-bottom: 1px solid var(--ui-color-divider-default);
+}
+
+.ui-access-rights-v2-cell-popup-header-master-switcher-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	align-self: stretch;
+	gap: 4px;
+	padding: 8px 7px 10px;
+}
+
+.ui-access-rights-v2-cell-popup-header-toggle-container {
+	display: flex;
+}

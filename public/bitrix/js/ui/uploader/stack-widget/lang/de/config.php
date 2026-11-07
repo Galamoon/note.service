@@ -1,0 +1,24 @@
+<?php
+$MESS["STACK_WIDGET_ABORT_UPLOAD"] = "Hochladen abbrechen";
+$MESS["STACK_WIDGET_DRAG_FILES_HINT"] = "Dateien hierher verschieben";
+$MESS["STACK_WIDGET_DRAG_FILE_HINT"] = "Datei hierher verschieben";
+$MESS["STACK_WIDGET_FILES_UPLOADING"] = "Dateien werden hochgeladen";
+$MESS["STACK_WIDGET_FILE_COUNT"] = "Dateien: #count#";
+$MESS["STACK_WIDGET_FILE_UPLOADING"] = "Datei wird hochgeladen";
+$MESS["STACK_WIDGET_FILE_UPLOAD_ERROR"] = "Fehler beim Hochladen";
+$MESS["STACK_WIDGET_OPEN_FILE_GALLERY"] = "Galerie öffnen";
+$MESS["STACK_WIDGET_POPUP_TITLE"] = "Dateien hochgeladen";
+$MESS["STACK_WIDGET_UPLOAD_FILE"] = "Datei hochladen";
+$MESS["STACK_WIDGET_UPLOAD_FILES"] = "Dateien hochladen";
+$MESS["STACK_WIDGET_UPLOAD_IMAGE"] = "Bild hochladen";
+$MESS["STACK_WIDGET_UPLOAD_IMAGES"] = "Bild hochladen";
+$MESS["STACK_WIDGET_DROP_KEYBOARD_HINT"] = "Drücken Sie Enter oder Leerzeichen, um das Dialogfenster der Dateiauswahl zu öffnen";
+$MESS["STACK_WIDGET_ADD_FILE_LABEL"] = "Datei hinzufügen";
+$MESS["STACK_WIDGET_STACK_LABEL_ONE"] = "Dateien hochgeladen: #FILENAME#";
+$MESS["STACK_WIDGET_STACK_LABEL_MANY"] = "Dateien hochgeladen: #COUNT#";
+$MESS["STACK_WIDGET_STACK_LABEL_LOADING"] = "Dateien werden vorbereitet";
+$MESS["STACK_WIDGET_UPLOAD_PROGRESS_LABEL"] = "Upload-Fortschritt";
+$MESS["STACK_WIDGET_FILE_ADDED_ANNOUNCE"] = "Datei hinzugefügt: \"#FILENAME#\"";
+$MESS["STACK_WIDGET_FILE_REMOVED_ANNOUNCE"] = "Datei entfernt: \"#FILENAME#\"";
+$MESS["STACK_WIDGET_FILE_ERROR_ANNOUNCE"] = "Datei \"#FILENAME#\" konnte nicht hochgeladen werden";
+$MESS["STACK_WIDGET_ERROR_ANNOUNCE"] = "Dateien konnten nicht hochgeladen werden";

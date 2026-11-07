@@ -1,0 +1,258 @@
+<?php
+namespace Bitrix\Rest\Event;
+
+use Bitrix\Main;
+use Bitrix\Rest\AppTable;
+use Bitrix\Rest\EventTable;
+use Bitrix\Rest\Public\Provider\ApplicationProvider;
+use Bitrix\Rest\Public\Provider\Dto\ApplicationStatusData;
+use Bitrix\Rest\Public\Provider\Mapper\ApplicationDataMapper;
+use Bitrix\Rest\Public\Service\ApplicationStatusCalculator;
+use Bitrix\Rest\Tools\Diagnostics\Event;
+use Bitrix\Rest\Tools\Diagnostics\LoggerManager;
+
+/**
+ * Class Callback
+ *
+ * Callback for Bitrix events transferred to REST events
+ *
+ * @package Bitrix\Rest
+ **/
+class Callback
+{
+	/**
+	 * @var array<string, ApplicationStatusData>
+	 */
+	private static array $appStatusCache = [];
+	private static ?ApplicationDataMapper $applicationDataMapper = null;
+	private static ?ApplicationStatusCalculator $statusCalculator = null;
+
+	/**
+	 * Handler for all PHP events transferred to REST.
+	 *
+	 * @param string $name Event name.
+	 * @param array $arguments Event arguments.
+	 *
+	 * @throws \Bitrix\Main\ArgumentException
+	 * @throws \Bitrix\Main\SystemException
+	 * @throws \Exception
+	 */
+	public static function __callStatic($name, $arguments)
+	{
+		self::$appStatusCache = [];
+
+		$event = Sender::parseEventName($name);
+		LoggerManager::getInstance()->getLogger()?->info(
+			"\n{delimiter}\n"
+			. "{date} - {host}\n{delimiter}\n"
+			. "Event {eventName} starts. \n{delimiter}\n"
+			. "{arguments}", [
+			'RESPONSE_DATA' => $arguments,
+			'SCOPE' => $event['MODULE_ID'] ?? null,
+			'METHOD' => $event['EVENT'] ?? null,
+			'MESSAGE' => Event\LogType::EVENT_START->value,
+			'eventName' => $event['EVENT'],
+			'arguments' => $arguments,
+		]);
+
+		$provider = new \CRestProvider();
+		$description = $provider->getDescription();
+
+		foreach($description as $scope => $scopeMethods)
+		{
+			if(
+				array_key_exists(\CRestUtil::EVENTS, $scopeMethods)
+				&& is_array($scopeMethods[\CRestUtil::EVENTS])
+			)
+			{
+				foreach($scopeMethods[\CRestUtil::EVENTS] as $key => $restEvent)
+				{
+					if($restEvent[0] == $event['MODULE_ID'] && mb_strtoupper($restEvent[1]) == $event['EVENT'])
+					{
+						$event['EVENT_REST'] = array(
+							'EVENT' => $key,
+							'HANDLER' => $restEvent[2],
+							'ADDITIONAL' => array(),
+						);
+
+						if(isset($restEvent[3]) && is_array($restEvent[3]))
+						{
+							$event['EVENT_REST']['ADDITIONAL'] = $restEvent[3];
+						}
+
+						break;
+					}
+				}
+			}
+
+			if(array_key_exists('EVENT_REST', $event))
+			{
+				break;
+			}
+		}
+
+		$handlerFound = false;
+		$appHoldExceptId = 0;
+		if (!empty($arguments[1]['REST_EVENT_HOLD_EXCEPT_APP']))
+		{
+			$holdExceptApp = (new ApplicationProvider())->findByClientId(
+				(string)$arguments[1]['REST_EVENT_HOLD_EXCEPT_APP'],
+			);
+			if ($holdExceptApp !== null && $holdExceptApp->getId() > 0)
+			{
+				$appHoldExceptId = $holdExceptApp->getId();
+			}
+		}
+
+		if (array_key_exists('EVENT_REST', $event))
+		{
+			$query = EventTable::query()
+				->setSelect([
+					'ID',
+					'APP_ID',
+					'EVENT_NAME',
+					'EVENT_HANDLER',
+					'USER_ID',
+					'APPLICATION_TOKEN',
+					'CONNECTOR_ID',
+					'INTEGRATION_ID',
+					'APP_CODE' => 'REST_APP.CLIENT_ID',
+					'APP_STATUS' => 'REST_APP.STATUS',
+					'APP_ACTIVE' => 'REST_APP.ACTIVE',
+					'APP_INSTALLED' => 'REST_APP.INSTALLED',
+					'APP_DATE_FINISH' => 'REST_APP.DATE_FINISH',
+					'APP_IS_TRIALED' => 'REST_APP.IS_TRIALED',
+					'APP_URL_DEMO' => 'REST_APP.URL_DEMO',
+				])
+				->where('EVENT_NAME', mb_strtoupper($event['EVENT_REST']['EVENT']))
+				->where('VERSION', 1)
+				->where(
+					(Main\ORM\Query\Query::filter()
+						->logic('or')
+						->where(
+							Main\ORM\Query\Query::filter()
+								->where('REST_APP.ACTIVE', '=', AppTable::ACTIVE)
+								->where('REST_APP.INSTALLED', '=', AppTable::INSTALLED)
+						)
+						->whereNull('REST_APP.CLIENT_ID')
+					)
+				)
+			;
+			if ($appHoldExceptId > 0)
+			{
+				$query->where('APP_ID', '=', $appHoldExceptId);
+			}
+
+			$dataProcessed = !is_array($event['EVENT_REST']['HANDLER']) || !is_callable($event['EVENT_REST']['HANDLER']);
+			$call = array();
+			foreach ($query->fetchAll() as $handler)
+			{
+				$handlerFound = true;
+
+				LoggerManager::getInstance()->getLogger()?->info(
+					"\n{delimiter}\n"
+					. "{date} - {host}\n{delimiter}\n"
+					. "Event {eventName} handler found. \n{delimiter}\n"
+					. "{handler}", [
+					'RESPONSE_DATA' => $arguments,
+					'CLIENT_ID' => $handler['APP_CODE'] ?? null,
+					'SCOPE' => $event['MODULE_ID'] ?? null,
+					'EVENT_ID' => $handler['ID'] ?? null,
+					'METHOD' => $event['EVENT'] ?? null,
+					'MESSAGE' => Event\LogType::EVENT_HANDLER_FOUND->value,
+					'eventName' => $event['EVENT'] ?? null,
+					'handler' => $handler,
+				]);
+
+				if (!empty($handler['APP_CODE']))
+				{
+					$appStatus = static::getApplicationStatus($handler);
+					if ($appStatus->isPaymentExpired())
+					{
+						LoggerManager::getInstance()->getLogger()?->info(
+							"\n{delimiter}\n"
+							. "{date} - {host}\n{delimiter}\n"
+							. "Event {eventName} skipped because PAYMENT_EXPIRED: \n"
+							. "{appStatus}", [
+							'RESPONSE_DATA' => $arguments,
+							'SCOPE' => $event['MODULE_ID'] ?? null,
+							'METHOD' => $event['EVENT'] ?? null,
+							'CLIENT_ID' => $handler['APP_CODE'],
+							'EVENT_ID' => $handler['ID'] ?? null,
+							'MESSAGE' => Event\LogType::SKIP_BY_PAYMENT_EXPIRED->value,
+							'eventName' => $event['EVENT'] ?? null,
+							'appStatus' => $appStatus->toArray(),
+						]);
+
+						continue;
+					}
+				}
+
+				$handlerArguments = $arguments;
+
+				if(!$dataProcessed)
+				{
+					try
+					{
+						$handlerArguments = call_user_func_array($event['EVENT_REST']['HANDLER'], array($handlerArguments, $handler));
+						$call[] = array($handler, $handlerArguments, $event['EVENT_REST']['ADDITIONAL']);
+					}
+					catch(\Exception $e)
+					{
+						LoggerManager::getInstance()->getLogger()?->error(
+							"\n{delimiter}\n"
+							. "{date} - {host}\n{delimiter}\n"
+							. "Event {eventName} exception: \n"
+							. "{errorCode}: {errorMessage}", [
+							'RESPONSE_DATA' => $e->getMessage(),
+							'SCOPE' => $event['MODULE_ID'] ?? null,
+							'METHOD' => $event['EVENT'] ?? null,
+							'CLIENT_ID' => $handler['APP_CODE'] ?? null,
+							'EVENT_ID' => $handler['ID'] ?? null,
+							'RESPONSE_STATUS' => $e->getCode(),
+							'MESSAGE' => Event\LogType::EVENT_EXCEPTION->value,
+							'eventName' => $event['EVENT'],
+							'errorCode' => $e->getCode(),
+							'errorMessage' => $e->getMessage(),
+						]);
+					}
+				}
+				else
+				{
+					$call[] = array($handler, $handlerArguments, $event['EVENT_REST']['ADDITIONAL']);
+				}
+			}
+
+			if (!empty($call))
+			{
+				Sender::call($call);
+			}
+		}
+
+		if(!$handlerFound)
+		{
+			Sender::unbind($event['MODULE_ID'], $event['EVENT']);
+		}
+	}
+
+	/**
+	 * @param array<string, mixed> $handler
+	 */
+	private static function getApplicationStatus(array $handler): ApplicationStatusData
+	{
+		$clientId = (string)$handler['APP_CODE'];
+
+		self::$applicationDataMapper ??= new ApplicationDataMapper();
+		self::$statusCalculator ??= new ApplicationStatusCalculator();
+
+		return self::$appStatusCache[$clientId] ??= self::$statusCalculator->calculate(
+			self::$applicationDataMapper->convertFromRow([
+				'CLIENT_ID' => $handler['APP_CODE'],
+				'STATUS' => $handler['APP_STATUS'] ?? null,
+				'DATE_FINISH' => $handler['APP_DATE_FINISH'] ?? null,
+				'IS_TRIALED' => $handler['APP_IS_TRIALED'] ?? null,
+				'URL_DEMO' => $handler['APP_URL_DEMO'] ?? null,
+			]),
+		);
+	}
+}

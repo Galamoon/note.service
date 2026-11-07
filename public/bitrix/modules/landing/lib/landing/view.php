@@ -1,0 +1,221 @@
+<?php
+namespace Bitrix\Landing\Landing;
+
+use Bitrix\Landing\PublicAction\Block;
+use \Bitrix\Main\Entity;
+use \Bitrix\Main\Type\DateTime;
+use \Bitrix\Landing\Manager;
+use \Bitrix\Landing\Landing;
+use \Bitrix\Landing\Rights;
+use \Bitrix\Landing\Internals\ViewTable;
+use Bitrix\Main\UserTable;
+
+class View
+{
+	/**
+	 * Key for session array for storing viewed landings.
+	 */
+	const SESSION_VIEWS_KEY = 'LANDING_VIEWS';
+
+	/**
+	 * Inc views for page.
+	 * @param int $lid Landing id.
+	 * @return void
+	 */
+	protected static function incViewsPage($lid)
+	{
+		$lid = (int)$lid;
+		$res = ViewTable::getList([
+			'select' => [
+				'SUM'
+			],
+			'filter' => [
+				'LID' => $lid
+			],
+			'runtime' => [
+				new Entity\ExpressionField(
+					'SUM', 'SUM(%s)', ['VIEWS']
+				)
+			]
+		]);
+		if ($row = $res->fetch())
+		{
+			Rights::setOff();
+			Landing::update($lid, [
+				'VIEWS' => $row['SUM'],
+				'DATE_MODIFY' => false
+			]);
+			Rights::setOn();
+		}
+	}
+
+	/**
+	 * Inc views of page.
+	 * @param int $lid Landing id.
+	 * @param int $uid User id (current by default).
+	 * @return void
+	 */
+	public static function inc($lid, $uid = null)
+	{
+		if (!$uid)
+		{
+			$uid = Manager::getUserId();
+		}
+		$lid = (int)$lid;
+		$uid = (int)$uid;
+		$date = new DateTime;
+
+		if ($uid <= 0)
+		{
+			return;
+		}
+		if (!isset($_SESSION[self::SESSION_VIEWS_KEY]))
+		{
+			$_SESSION[self::SESSION_VIEWS_KEY] = [];
+		}
+
+		if (!in_array($lid, $_SESSION[self::SESSION_VIEWS_KEY]))
+		{
+			$res = ViewTable::getList([
+				'select' => [
+					'ID', 'VIEWS'
+				],
+				'filter' => [
+					'LID' => $lid,
+					'USER_ID' => $uid
+				]
+			]);
+			if ($row = $res->fetch())
+			{
+				$result = ViewTable::update($row['ID'], [
+					'VIEWS' => $row['VIEWS'] + 1,
+					'LAST_VIEW' => $date
+				]);
+			}
+			else
+			{
+				$result = ViewTable::add([
+					'VIEWS' => 1,
+					'LID' => $lid,
+					'USER_ID' => $uid,
+					'FIRST_VIEW' => $date,
+					'LAST_VIEW' => $date,
+				]);
+			}
+			if ($result->isSuccess())
+			{
+				self::incViewsPage($lid);
+				$_SESSION[self::SESSION_VIEWS_KEY][] = $lid;
+			}
+		}
+	}
+
+	public static function getNumberUniqueViews(int $lid): int
+	{
+		$lid = (int)$lid;
+		$res = ViewTable::getList([
+			'select' => [
+				'COUNT'
+			],
+			'filter' => [
+				'LID' => $lid
+			],
+			'runtime' => [
+				new Entity\ExpressionField(
+					'COUNT', 'COUNT(*)'
+				)
+			]
+		]);
+
+		if ($row = $res->fetch())
+		{
+			$views = (int)$row['COUNT'];
+		}
+
+		if (isset($views) && is_int($views))
+		{
+			return $views;
+		}
+
+		return 0;
+	}
+
+	/**
+	 * Returns the total number of views (sum of VIEWS field) for the given landing.
+	 * @param int $lid Landing id.
+	 *
+	 * @return int
+	 */
+	public static function getNumberTotalViews(int $lid): int
+	{
+		$lid = (int)$lid;
+		$res = ViewTable::getList([
+			'select' => [
+				'SUM'
+			],
+			'filter' => [
+				'LID' => $lid
+			],
+			'runtime' => [
+				new Entity\ExpressionField(
+					'SUM', 'SUM(%s)', ['VIEWS']
+				)
+			]
+		]);
+
+		if ($row = $res->fetch())
+		{
+			$totalViews = (int)$row['SUM'];
+		}
+
+		if (isset($totalViews) && is_int($totalViews))
+		{
+			return $totalViews;
+		}
+
+		return 0;
+	}
+
+	public static function getUniqueUserData(int $lid): array
+	{
+		$res = ViewTable::getList([
+			'select' => [
+				'USER_ID',
+				'NAME' => 'USER.NAME',
+				'LAST_NAME' => 'USER.LAST_NAME',
+				'PERSONAL_PHOTO' => 'USER.PERSONAL_PHOTO',
+			],
+			'filter' => ['=LID' => $lid],
+			'runtime' => [
+				new Entity\ReferenceField(
+					'USER',
+					UserTable::class,
+					['=this.USER_ID' => 'ref.ID'],
+					['join_type' => 'INNER'],
+				),
+			],
+		]);
+		$data = [
+			'id' => [],
+			'name' => [],
+			'avatar' => [],
+		];
+		while ($row = $res->fetch())
+		{
+			$data['id'][] = $row['USER_ID'];
+			$data['name'][] = \CUser::formatName(\CSite::getNameFormat(false), $row, true, false);
+			$avatar = null;
+			if ($row['PERSONAL_PHOTO'])
+			{
+				$avatar = \CFile::ResizeImageGet(
+					$row['PERSONAL_PHOTO'],
+					['width' => 58, 'height' => 58],
+					BX_RESIZE_IMAGE_EXACT,
+				);
+			}
+			$data['avatar'][] = $avatar['src'] ?? '';
+		}
+
+		return $data;
+	}
+}

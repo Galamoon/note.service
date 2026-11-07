@@ -1,0 +1,11 @@
+<?php
+$MESS["CT_BCI_TPL_MESS_CLOSE_BTN_TITLE"] = "Жабу";
+$MESS['CT_BCI_TPL_MESS_GALLERY_ARIA'] = 'Суретті таңдау';
+$MESS['CT_BCI_TPL_MESS_GALLERY_DOT_ARIA'] = '#TOTAL# ішінен #NUM# сурет';
+$MESS['CT_BCI_TPL_MESS_PREBUY_CONTENT_ARIA'] = 'Тауар және сатып алу параметрлері';
+$MESS['CT_BCI_TPL_MESS_QUANTITY_ARIA'] = 'Саны';
+$MESS['CT_BCI_TPL_MESS_QUANTITY_DOWN_ARIA'] = 'Санын азайту';
+$MESS['CT_BCI_TPL_MESS_QUANTITY_UP_ARIA'] = 'Санын көбейту';
+$MESS['CT_BCI_TPL_MESS_SKU_GROUP_ARIA'] = 'Нұсқа';
+$MESS['CT_BCI_TPL_MESS_SKU_SELECTED_ARIA'] = 'Таңдалды: #PROPERTY# — #VALUE#';
+$MESS['CT_BCI_TPL_MESS_SKU_VALUE_ARIA'] = '#ID# нұсқасы';

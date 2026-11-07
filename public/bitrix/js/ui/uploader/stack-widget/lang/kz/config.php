@@ -1,0 +1,24 @@
+<?php
+$MESS["STACK_WIDGET_ABORT_UPLOAD"] = "Жүктеуді болдырмау";
+$MESS["STACK_WIDGET_DRAG_FILES_HINT"] = "Файлдарды осында орын ауыстыруға болады";
+$MESS["STACK_WIDGET_DRAG_FILE_HINT"] = "Файлды осында сүйреп әкелуге болады";
+$MESS["STACK_WIDGET_FILES_UPLOADING"] = "Файлдарды жүктеу";
+$MESS["STACK_WIDGET_FILE_COUNT"] = "#count# файл";
+$MESS["STACK_WIDGET_FILE_UPLOADING"] = "Файлды жүктеу";
+$MESS["STACK_WIDGET_FILE_UPLOAD_ERROR"] = "Жүктеу қатесі";
+$MESS["STACK_WIDGET_OPEN_FILE_GALLERY"] = "Галереяны ашу";
+$MESS["STACK_WIDGET_POPUP_TITLE"] = "Жүктелген файлдар";
+$MESS["STACK_WIDGET_UPLOAD_FILE"] = "Файлды жүктеу";
+$MESS["STACK_WIDGET_UPLOAD_FILES"] = "Файлдарды жүктеу";
+$MESS["STACK_WIDGET_UPLOAD_IMAGE"] = "Кескінді жүктеу";
+$MESS["STACK_WIDGET_UPLOAD_IMAGES"] = "Кескіндерді жүктеу";
+$MESS["STACK_WIDGET_DROP_KEYBOARD_HINT"] = "Файлды таңдау терезесін ашу үшін Enter немесе бос орын пернесін басыңыз";
+$MESS["STACK_WIDGET_ADD_FILE_LABEL"] = "Файл қосу";
+$MESS["STACK_WIDGET_STACK_LABEL_ONE"] = "Жүктелген файлдар: #FILENAME#";
+$MESS["STACK_WIDGET_STACK_LABEL_MANY"] = "Жүктелген файлдар: #COUNT#";
+$MESS["STACK_WIDGET_STACK_LABEL_LOADING"] = "Файлдарды дайындау";
+$MESS["STACK_WIDGET_UPLOAD_PROGRESS_LABEL"] = "Жүктеу барысы";
+$MESS["STACK_WIDGET_FILE_ADDED_ANNOUNCE"] = "Файл қосылды: #FILENAME#";
+$MESS["STACK_WIDGET_FILE_REMOVED_ANNOUNCE"] = "Файл жойылды: #FILENAME#";
+$MESS["STACK_WIDGET_FILE_ERROR_ANNOUNCE"] = "#FILENAME# файлын жүктеу мүмкін болмады";
+$MESS["STACK_WIDGET_ERROR_ANNOUNCE"] = "Файлдарды жүктеу мүмкін болмады";

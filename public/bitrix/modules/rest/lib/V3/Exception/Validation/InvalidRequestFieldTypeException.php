@@ -1,0 +1,22 @@
+<?php
+
+namespace Bitrix\Rest\V3\Exception\Validation;
+
+use Bitrix\Main\Error;
+use Bitrix\Main\Localization\LocalizableMessage;
+use Bitrix\Rest\V3\Dto\TypeHelper;
+
+class InvalidRequestFieldTypeException extends RequestValidationException
+{
+	public function __construct(string $field, string $type)
+	{
+		$message = new LocalizableMessage(
+			code: 'REST_V3_EXCEPTION_VALIDATION_INVALIDREQUESTFIELDTYPEEXCEPTION',
+			replace: [
+				'#FIELD#' => $field,
+				'#TYPE#' => TypeHelper::classExists($type) ? (new \ReflectionClass($type))->getShortName() : $type,
+			],
+		);
+		parent::__construct([new Error($message, $field)]);
+	}
+}

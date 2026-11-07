@@ -1,0 +1,20 @@
+<?php
+$MESS['LANDING_AGREEMENT_ACCEPT_BY_SUBMIT_HINT'] = 'Келісім осы нысан сәтті жіберілген кезде расталады';
+$MESS["LANDING_AGREEMENT_CONSENTS_BUTTON_LABEL"] = "Қабылданған келісімдер тізімі";
+$MESS["LANDING_AGREEMENT_EDIT_BUTTON_LABEL"] = 'Келісімдерді баптау';
+$MESS["LANDING_AGREEMENT_FORM_TITLE"] = 'Келісімдердің әрекеті';
+$MESS["LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_1"] = "Келісім міндетті<br>Автоматты түрде қабылданады";
+$MESS["LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_2"] = "Келісім міндетті<br>Толық мәтінді оқу қажет";
+$MESS["LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_3"] = "Келісім міндетті емес<br>Автоматты түрде қабылданады";
+$MESS["LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_4"] = 'Келісім міндетті емес<br>Автоматты түрде қабылданбайды';
+$MESS['LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_5'] = 'Келісім нысанды жібергенде беріледі';
+$MESS['LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_5_CAPTION'] = 'Келісімді бөлек белгілеу қажет емес';
+$MESS["LANDING_AGREEMENT_LIST_CREATE_BUTTON_LABEL"] = 'Құжат жасау';
+$MESS["LANDING_AGREEMENT_LIST_SELECT_BUTTON_LABEL"] = 'Құжатты таңдау';
+$MESS['LANDING_AGREEMENT_NOTICE_DEFAULT_TEXT'] = 'Ақпараттық және жарнамалық хабарламаларды тек сіздің келісіміңізбен жіберуге болады. Оларды алу үшін келісім беріңіз. Хабарламаларсыз жалғастыру үшін батырманы қайта басыңыз';
+$MESS['LANDING_AGREEMENT_NOTICE_DISABLED_ACCEPT_BY_SUBMIT_HINT'] = 'Келісімнің таңдалған әрекеті үшін бұл опция қолжетімсіз';
+$MESS['LANDING_AGREEMENT_NOTICE_DISABLED_REQUIRED_HINT'] = 'Келісімнің таңдалған әрекеті үшін бұл опция қолжетімсіз';
+$MESS['LANDING_AGREEMENT_NOTICE_HELP_LINK_TEXT'] = 'Бұл қалай жұмыс істейді';
+$MESS['LANDING_AGREEMENT_NOTICE_HELP_TEXT'] = 'Бұл баптау келісімді міндетті етпей, клиенттің назарын құжатқа аударуға көмектеседі. Клиент нысанды келісімсіз алғаш рет жіберуге тырысса, ескерту көрсетіледі де, нысан жіберілмейді. Қайта жібергенде нысанды келісімсіз жіберуге болады';
+$MESS['LANDING_AGREEMENT_NOTICE_SWITCH_LABEL'] = 'Нысанды осы келісімнің шарттарын қабылдамай алғаш рет жіберуге тырысқанда ескерту көрсету';
+$MESS['LANDING_AGREEMENT_NOTICE_TEXT_FIELD_LABEL'] = 'Ескерту мәтіні';

@@ -1,0 +1,20 @@
+<?php
+$MESS['LANDING_AGREEMENT_ACCEPT_BY_SUBMIT_HINT'] = 'Die Zustimmung wird bestätigt, wenn dieses Formular erfolgreich abgesendet wird.';
+$MESS["LANDING_AGREEMENT_CONSENTS_BUTTON_LABEL"] = 'Akzeptierte Vereinbarungen anzeigen';
+$MESS["LANDING_AGREEMENT_EDIT_BUTTON_LABEL"] = 'Vereinbarungen konfigurieren';
+$MESS["LANDING_AGREEMENT_FORM_TITLE"] = 'Vereinbarungsverhalten';
+$MESS["LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_1"] = "Zustimmung ist erforderlich<br>Automatisch akzeptiert";
+$MESS["LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_2"] = "Zustimmung ist erforderlich<br>Text der Zustimmung muss gelesen werden";
+$MESS["LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_3"] = 'Zustimmung ist optional<br>Automatisch akzeptiert';
+$MESS["LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_4"] = 'Zustimmung ist optional<br>Nicht automatisch akzeptiert';
+$MESS['LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_5'] = 'Zustimmung wird beim Absenden des Formulars erteilt';
+$MESS['LANDING_AGREEMENT_FORM_TYPE_FIELD_ITEM_5_CAPTION'] = 'Kein separates Kontrollkästchen für die Zustimmung';
+$MESS["LANDING_AGREEMENT_LIST_CREATE_BUTTON_LABEL"] = 'Dokument erstellen';
+$MESS["LANDING_AGREEMENT_LIST_SELECT_BUTTON_LABEL"] = 'Dokument auswählen';
+$MESS['LANDING_AGREEMENT_NOTICE_DEFAULT_TEXT'] = 'Informations- und Werbenachrichten dürfen nur mit Ihrer Einwilligung versendet werden. Wenn Sie diese Nachrichten erhalten möchten, stimmen Sie zu. Um ohne Nachrichten fortzufahren, klicken Sie erneut auf die Schaltfläche.';
+$MESS['LANDING_AGREEMENT_NOTICE_DISABLED_ACCEPT_BY_SUBMIT_HINT'] = 'Diese Option ist für das gewählte Verhalten der Vereinbarung nicht verfügbar';
+$MESS['LANDING_AGREEMENT_NOTICE_DISABLED_REQUIRED_HINT'] = 'Diese Option ist für das gewählte Verhalten der Vereinbarung nicht verfügbar';
+$MESS['LANDING_AGREEMENT_NOTICE_HELP_LINK_TEXT'] = 'So funktioniert es';
+$MESS['LANDING_AGREEMENT_NOTICE_HELP_TEXT'] = 'Mit dieser Einstellung machen Sie Kunden auf das Dokument aufmerksam, ohne die Zustimmung verpflichtend zu machen. Beim ersten Versuch, das Formular ohne Zustimmung abzusenden, erscheint ein Hinweis und das Formular wird nicht abgesendet. Beim nächsten Versuch kann das Formular ohne Zustimmung abgesendet werden.';
+$MESS['LANDING_AGREEMENT_NOTICE_SWITCH_LABEL'] = 'Beim ersten Versuch, das Formular ohne Zustimmung zu dieser Vereinbarung abzusenden, einen Hinweis anzeigen';
+$MESS['LANDING_AGREEMENT_NOTICE_TEXT_FIELD_LABEL'] = 'Hinweistext';

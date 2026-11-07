@@ -1,0 +1,21 @@
+<?php
+$MESS['UI_BLOCK_DIAGRAM_A11Y_BLOCK_DISPLACED'] = 'Блок бос орынға жылжытылды';
+$MESS['UI_BLOCK_DIAGRAM_A11Y_PLACEMENT_REFUSED'] = 'Әрекет тоқтатылды: жақын жерде бос орын жоқ';
+$MESS['UI_BLOCK_DIAGRAM_CANVAS_LABEL'] = 'Сызба кенебі. Жылжу үшін көрсеткі пернелерін пайдаланыңыз';
+$MESS["UI_BLOCK_DIAGRAM_CANVAS_MAP_CLOSE"] = "Шағын картаны жабу";
+$MESS["UI_BLOCK_DIAGRAM_CANVAS_MAP_LABEL"] = "Схеманың шағын картасы. Жылжу үшін көрсеткі пернелерін пайдаланыңыз";
+$MESS["UI_BLOCK_DIAGRAM_CANVAS_MAP_OPEN"] = "Шағын картаны ашу";
+$MESS['UI_BLOCK_DIAGRAM_CANVAS_MAP_TITLE'] = 'Мини-карта';
+$MESS['UI_BLOCK_DIAGRAM_CONTEXT_MENU_ITEM_COPY'] = 'Көшіру';
+$MESS['UI_BLOCK_DIAGRAM_CONTEXT_MENU_ITEM_PASTE'] = 'Қою';
+$MESS["UI_BLOCK_DIAGRAM_DELETE_BLOCK_CONTEXT_MENU_ITEM"] = "Жою";
+$MESS["UI_BLOCK_DIAGRAM_DELETE_CONNECTION_CONTEXT_MENU_ITEM"] = "Жою";
+$MESS['UI_BLOCK_DIAGRAM_HISTORY_NEXT'] = 'Алға қадам';
+$MESS['UI_BLOCK_DIAGRAM_HISTORY_PREV'] = 'Артқа қадам';
+$MESS['UI_BLOCK_DIAGRAM_SEARCH_BAR_OPEN'] = 'Блокты іздеу';
+$MESS["UI_BLOCK_DIAGRAM_SEARCH_BAR_SEARCH_PLACEHOLDER"] = "Іздеу";
+$MESS["UI_BLOCK_DIAGRAM_SEARCH_BAR_SEARCH_RESULT_TITLE"] = "Іздеу нәтижесі";
+$MESS['UI_BLOCK_DIAGRAM_ZOOM_FIT_TO_VIEW'] = 'Схеманы толық көрсету';
+$MESS["UI_BLOCK_DIAGRAM_ZOOM_IN"] = "Масштабты үлкейту";
+$MESS["UI_BLOCK_DIAGRAM_ZOOM_OUT"] = "Масштабты кішірейту";
+$MESS["UI_BLOCK_DIAGRAM_ZOOM_PRESET_BUTTON"] = "Масштабты таңдау";

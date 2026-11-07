@@ -1,0 +1,4 @@
+<?
+$MESS["LANDING_TPL_CHAIN_TPL_MAIN"] = "Startseite";
+$MESS['LANDING_TPL_CHAIN_TPL_NAV_LABEL'] = 'Seitenpfad';
+?>

@@ -1,0 +1,4 @@
+<?php
+$MESS["LANDING_BLOCK_0_MENU_06_LOGO_ALT"] = "Басты бет";
+$MESS["LANDING_BLOCK_0_MENU_06_NAV_LABEL"] = "Негізгі мәзір";
+$MESS["LANDING_BLOCK_0_MENU_06_TOGGLE_LABEL"] = "Мәзір";

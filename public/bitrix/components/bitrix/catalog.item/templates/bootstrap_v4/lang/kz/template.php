@@ -1,0 +1,16 @@
+<?php
+$MESS['CT_BCI_TPL_MESS_COMPARE_REMOVED_ARIA'] = 'Тауар салыстыру тізімінен жойылды';
+$MESS['CT_BCI_TPL_MESS_DISCOUNT_ARIA'] = 'Жеңілдік';
+$MESS['CT_BCI_TPL_MESS_GALLERY_ARIA'] = 'Тауар суреттері';
+$MESS['CT_BCI_TPL_MESS_GALLERY_DOT_ARIA'] = '#TOTAL# ішінен #NUM# сурет';
+$MESS['CT_BCI_TPL_MESS_LABEL_ARIA'] = 'Тауар белгілері';
+$MESS["CT_BCI_TPL_MESS_PRICE_SIMPLE_MODE"] = "#PRICE# бастап #VALUE# #UNIT# үшін";
+$MESS['CT_BCI_TPL_MESS_QUANTITY_ARIA'] = 'Саны';
+$MESS['CT_BCI_TPL_MESS_QUANTITY_CHANGED_ARIA'] = 'Саны: #QUANTITY# #MEASURE#';
+$MESS['CT_BCI_TPL_MESS_QUANTITY_DOWN_ARIA'] = 'Санын азайту';
+$MESS['CT_BCI_TPL_MESS_QUANTITY_UP_ARIA'] = 'Санын көбейту';
+$MESS['CT_BCI_TPL_MESS_SKU_CHANGED_ARIA'] = 'Таңдалды: #VALUE#. Бағасы: #PRICE#';
+$MESS['CT_BCI_TPL_MESS_SKU_CHANGED_NO_PRICE_ARIA'] = 'Таңдалды: #VALUE#';
+$MESS['CT_BCI_TPL_MESS_SKU_GROUP_ARIA'] = 'Нұсқа';
+$MESS['CT_BCI_TPL_MESS_SKU_SET_CHANGED_ARIA'] = '#PROPERTY#, қолжетімді нұсқалар: #COUNT#';
+$MESS['CT_BCI_TPL_MESS_SKU_VALUE_ARIA'] = '#ID# нұсқасы';

@@ -1,0 +1,21 @@
+<?php
+$MESS['UI_BLOCK_DIAGRAM_A11Y_BLOCK_DISPLACED'] = 'Block an eine freie Position verschoben';
+$MESS['UI_BLOCK_DIAGRAM_A11Y_PLACEMENT_REFUSED'] = 'Aktion abgebrochen: kein freier Platz in der Nähe';
+$MESS['UI_BLOCK_DIAGRAM_CANVAS_LABEL'] = 'Diagrammbereich. Verwenden Sie die Pfeiltasten zum Navigieren';
+$MESS["UI_BLOCK_DIAGRAM_CANVAS_MAP_CLOSE"] = "Minikarte schließen";
+$MESS["UI_BLOCK_DIAGRAM_CANVAS_MAP_LABEL"] = "Nutzen Sie die Pfeiltasten, um durch die Minikarte zu navigieren.";
+$MESS["UI_BLOCK_DIAGRAM_CANVAS_MAP_OPEN"] = "Minikarte öffnen";
+$MESS['UI_BLOCK_DIAGRAM_CANVAS_MAP_TITLE'] = 'Mini-Map';
+$MESS['UI_BLOCK_DIAGRAM_CONTEXT_MENU_ITEM_COPY'] = 'Kopieren';
+$MESS['UI_BLOCK_DIAGRAM_CONTEXT_MENU_ITEM_PASTE'] = 'Einfügen';
+$MESS["UI_BLOCK_DIAGRAM_DELETE_BLOCK_CONTEXT_MENU_ITEM"] = "Löschen";
+$MESS["UI_BLOCK_DIAGRAM_DELETE_CONNECTION_CONTEXT_MENU_ITEM"] = "Löschen";
+$MESS['UI_BLOCK_DIAGRAM_HISTORY_NEXT'] = 'Schritt vorwärts';
+$MESS['UI_BLOCK_DIAGRAM_HISTORY_PREV'] = 'Schritt zurück';
+$MESS['UI_BLOCK_DIAGRAM_SEARCH_BAR_OPEN'] = 'Block suchen';
+$MESS["UI_BLOCK_DIAGRAM_SEARCH_BAR_SEARCH_PLACEHOLDER"] = "Suchen";
+$MESS["UI_BLOCK_DIAGRAM_SEARCH_BAR_SEARCH_RESULT_TITLE"] = "Suchergebnisse";
+$MESS['UI_BLOCK_DIAGRAM_ZOOM_FIT_TO_VIEW'] = 'Gesamtes Diagramm anzeigen';
+$MESS["UI_BLOCK_DIAGRAM_ZOOM_IN"] = "Vergrößern";
+$MESS["UI_BLOCK_DIAGRAM_ZOOM_OUT"] = "Verkleinern";
+$MESS["UI_BLOCK_DIAGRAM_ZOOM_PRESET_BUTTON"] = "Skala auswählen";
