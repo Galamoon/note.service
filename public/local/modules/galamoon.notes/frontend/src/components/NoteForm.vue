@@ -130,6 +130,7 @@ export default {
     padding: 24px;
     width: 100%;
     max-width: 500px;
+    box-sizing: border-box;
 }
 
 .note-form__field {
@@ -149,6 +150,7 @@ export default {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
+    box-sizing: border-box;
 }
 
 .note-form__input_error,
