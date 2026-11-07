@@ -1,1 +1,0 @@
-<?php $filesInfo = ["/local/js/galamoon/notes/dist/main.js" => "179402683677423",]; ?>

@@ -1,0 +1,6 @@
+# Cache directories (runtime-generated, never commit)
+cache/
+managed_cache/
+
+# Backup
+backup/
